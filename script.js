@@ -73,8 +73,7 @@ const submit_data = () => {
     const formData = new FormData();
     let url = 'http://127.0.0.1:1234/submit';
 
-    // formData.append('batch', data['project']['value']);
-    formData.append('batch', '1');
+    formData.append('batch', data['project']['value']);
     formData.append('username', data['user_name']['value']);
     formData.append('mobile', data['user_phone']['value']);
     formData.append('qr_code', data['healthy_code']['value']);
@@ -185,7 +184,7 @@ const validate_all_fields = () => {
             final_validation = false;
         }
     }
-    // 
+    //
     check_element = document.getElementById('check');
     if (!check_element.checked) {
         final_validation = false;
