@@ -71,7 +71,7 @@ const get_image_input = (field) => {
 
 const submit_data = () => {
     const formData = new FormData();
-    let url = 'http://127.0.0.1:1234/submit';
+    let url = '/submit';
 
     formData.append('batch', data['project']['value']);
     formData.append('username', data['user_name']['value']);
@@ -84,12 +84,18 @@ const submit_data = () => {
         method: 'POST',
         body: formData,
     })
-        .then((response) => console.log(response))
+        .then((response) => {
+            if (response.status === 200) {
+                alert('上传成功');
+            } else {
+                alert(`上传失败，错误码为${response.status}`);
+            }
+        })
         .then((data) => {
             console.log('Success:', data);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.log(error);
         });
 
     // http.send(concat_data);
