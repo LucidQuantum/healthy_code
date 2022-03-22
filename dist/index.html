@@ -1,91 +1,94 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>健康码、行程码收集</title>
-      <link rel="stylesheet" type="text/css" href="/index.3a01df49.css">
-      
-   </head>
-   <body>
-      <div class="title">
-         <h1>金华职安技能培训中心</h1>
-         <p class="description">学员健康码、行程码上传通道</p>
-      </div>
+    <head>
+        <title>健康码、行程码收集</title>
+        <link rel="stylesheet" type="text/css" href="/index.3a01df49.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    </head>
 
-      <p class="tags" id="project_label">1、选择场次</p>
-      <select class="box" id="project" onchange="get_string_input('project')">
-         <option value="3月现场报名咨询">3月现场报名咨询</option>
-         <option value="3月14日_特种设备作业_培训">
-            3月14日_特种设备作业_培训
-         </option>
-         <option value="3月15日_电工作业_培训">3月15日_电工作业_培训</option>
-         <option value="3月17日_高处作业_培训">3月17日_高处作业_培训</option>
-         <option value="3月22日_危化管理_培训">3月22日_危化管理_培训</option>
-      </select>
+    <body>
+        <!-- 标题 -->
+        <h1 class="margin_bottom_tiny margin_top_large">金华职安技能培训中心</h1>
+        <h2 class="margin_bottom_medium" id="subtitle">xx月xx日 - 健康码上传通道</h2>
 
-      <p class="tags" id="user_name_label">2、身份证上的姓名</p>
-      <input type="text" class="box" id="user_name" onchange="get_string_input('user_name')">
+        <!-- 第一步：填写信息 -->
+        <hr class="margin_bottom_medium">
+        <h1 class="margin_bottom_medium">第一步：填写信息</h1>
 
-      <p class="tags" id="user_phone_label">3、手机号（报名时填写的号码）</p>
-      <input type="number" class="box" id="user_phone" onchange="get_string_input('user_phone')">
+        <h2 class="margin_bottom_tiny" id="name_label">请输入姓名</h2>
+        <input placeholder="2-6个中文汉字" type="text" class="margin_bottom_small input" id="name">
 
-      <p class="tags" id="healthy_code_label">4、上传当天【健康码】截图</p>
-      <input class="box" type="file" accept="image/gif, image/jpg, image/png" id="healthy_code" onchange="get_image_input('healthy_code')">
-      <img id="healthy_code_image">
+        <h2 class="margin_bottom_tiny" id="phone_label">填写手机号</h2>
+        <!-- <input placeholder="11位数字" type="number" class="margin_bottom_medium input" id="phone" oninput="get_string_input('uphone')" /> -->
+        <input placeholder="11位数字" type="number" class="margin_bottom_medium input" id="phone">
 
-      <p class="tags" id="travel_code_label">5、上传当天【行程码】截图</p>
-      <input class="box" type="file" accept="image/gif, image/jpg, image/png" id="travel_code" onchange="get_image_input('travel_code')">
-      <img id="travel_code_image">
+        <hr class="margin_bottom_medium">
 
-      <p class="tags" id="covid_test_label">6、(可选)上传48小时内【核酸检测】截图</p>
-      <input class="box" type="file" accept="image/gif, image/jpg, image/png" id="covid_test" onchange="get_image_input('covid_test')">
-      <img id="covid_test_image">
+        <!-- 第二步：上传健康码 -->
+        <h1 class="margin_bottom_tiny" id="healthy_label">第二步：上传健康码</h1>
+        <input class="input" type="file" accept="image/gif, image/jpg, image/png" id="healthy">
+        <img id="healthy_image" class="margin_bottom_small margin_top_small">
 
-      <hr class="margin_bottom_large">
+        <hr class="margin_bottom_medium">
 
-      <p class="margin_bottom_small">本人近14天内是否有以下情况：</p>
-      <p class="margin_bottom_small">1、是否有发热、干咳、乏力、味觉嗅觉减退或丧失、鼻塞、流涕、咽痛、腹泻等症状？</p>
-        <label class="margin_right_large">
+        <!-- 第三步：上传行程码 -->
+        <h1 class="margin_bottom_tiny" id="travel_label">第三步：上传行程码</h1>
+        <input class="input" type="file" accept="image/gif, image/jpg, image/png" id="travel">
+        <img id="travel_image" class="margin_bottom_small margin_top_small">
+
+        <hr class="margin_bottom_medium">
+
+        <!-- 第四步：上传核酸检测（可选） -->
+        <h1 class="margin_bottom_tiny" id="covid_label">第四步：上传核酸检测（可选）</h1>
+        <input class="input" type="file" accept="image/gif, image/jpg, image/png" id="covid">
+        <img id="covid_image" class="margin_bottom_small margin_top_small">
+
+        <hr class="margin_bottom_medium">
+
+        <!-- 第五步：勾选项目 -->
+        <h1 class="margin_bottom_tiny">第五步：确认状况</h1>
+        <h2 class="margin_bottom_medium">本人近14天内是否有以下情况</h2>
+
+        <div class="margin_bottom_small">
+            <p class="margin_bottom_tiny_plus">1、是否有发热、干咳、乏力、味觉嗅觉减退或丧失、鼻塞、流涕、咽痛、腹泻等症状？</p>
             <input class="radio" type="radio" name="q1">
-            <span>是</span>
-        </label>
-        <label>
+            <p class="margin_right_large">是</p>
             <input class="radio" type="radio" name="q1" checked="">
-            <span>否</span>
-        </label>
-      <p class="margin_top_small margin_bottom_small">2、是否有国内中高风险地区旅行史或居住史？</p>
-              <label class="margin_right_large">
+            <p>否</p>
+        </div>
+
+        <div class="margin_bottom_small">
+            <p class="margin_bottom_tiny_plus">2、是否有国内中高风险地区旅行史或居住史？</p>
             <input class="radio" type="radio" name="q2">
-            <span>是</span>
-        </label>
-        <label>
+            <p class="margin_right_large">是</p>
             <input class="radio" type="radio" name="q2" checked="">
-            <span>否</span>
-        </label>
-      <p class="margin_top_small margin_bottom_small">3、是否有与境外、国内中高风险地区旅居史的发热/呼吸道病例有接触史？</p>
-              <label class="margin_right_large">
+            <p>否</p>
+        </div>
+
+        <div class="margin_bottom_small">
+            <p class="margin_bottom_tiny_plus">3、是否有与境外、国内中高风险地区旅居史的发热/呼吸道病例有接触史？</p>
             <input class="radio" type="radio" name="q3">
-            <span>是</span>
-        </label>
-        <label>
+            <p class="margin_right_large">是</p>
             <input class="radio" type="radio" name="q3" checked="">
-            <span>否</span>
-        </label>
-      <p class="margin_top_small margin_bottom_small">4、与你共同居住、共同生活、共同工作的密切接触人员当中是否有相似的发热/呼吸道病例？</p>
-              <label class="margin_right_large">
+            <p>否</p>
+        </div>
+
+        <div class="margin_bottom_medium">
+            <p class="margin_bottom_tiny_plus">4、与你共同居住、共同生活、共同工作的密切接触人员当中是否有相似的发热/呼吸道病例？</p>
             <input class="radio" type="radio" name="q4">
-            <span>是</span>
-        </label>
-        <label>
+            <p class="margin_right_large">是</p>
             <input class="radio" type="radio" name="q4" checked="">
-            <span>否</span>
-        </label>
+            <p>否</p>
+        </div>
 
-      <hr class="margin_bottom_large margin_top_large">
+        <hr class="margin_bottom_medium">
 
-        <input class="radio margin_right_small" id="check" type="checkbox" name="q5" onchange="validate_all_fields()" checked="true">
-        <span class="plain_text">本人承诺：以上信息属实</span>
+        <div class="margin_bottom_small">
+            <input class="radio margin_right_small" id="check" type="checkbox" name="q5" onchange="validate_all_fields()" checked="true">
+            <p>本人承诺：以上信息属实</p>
+        </div>
 
-      <button class="button box" id="submit_button" disabled="true" onclick="submit_data()">请填写所有必填项</button>
-   </body>
+        <button class="margin_bottom_large" id="submit_button" disabled="">请填写所有必填项</button>
+    </body>
 </html>
-<script src="/index.672d4772.js"></script>
+<script src="/index.8cfc62b9.js" defer=""></script>
